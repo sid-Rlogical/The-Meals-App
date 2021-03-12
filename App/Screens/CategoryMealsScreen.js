@@ -1,27 +1,40 @@
 import React from "react";
-import { View, Text, StyleSheet, Button, Platform } from "react-native";
+import { View, StyleSheet, FlatList, Text } from "react-native";
 
-import { CATEGORY } from "../Models/Data/Dummy-data";
-import Colors from "../Utils/Constants/Colors";
+import { CATEGORY, MEALS } from "../Models/Data/Dummy-data";
+import MealItem from "../Components/MealItem";
 
 const CategoryMealsScreen = (props) => {
   const cateId = props.navigation.getParam("categoryId");
-  const selectedTitle = CATEGORY.find((cat) => cat.id === cateId);
+  const mealList = MEALS.filter(
+    (mealObj) => mealObj.categoryIds.indexOf(cateId) >= 0
+  );
+
+  const flatListDataHandler = (itemData) => {
+    return (
+      <MealItem
+        mealsData={itemData}
+        onPress={() => {
+          props.navigation.navigate({
+            routeName: "MealsDetails",
+            params: {
+              mealDetailsId: itemData.item.id,
+            },
+          });
+        }}
+      />
+    );
+  };
 
   return (
     <View style={styles.Screen}>
-      <Text>Go to the Meal Screen</Text>
-      <Button
-        title="Go to the Meal Screen"
-        onPress={() => {
-          props.navigation.navigate("MealsDetails");
-        }}
-      />
-      <Button
-        title="Go Back"
-        onPress={() => {
-          props.navigation.goBack();
-        }}
+      <FlatList
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+        keyExtractor={(item, index) => item.id}
+        renderItem={flatListDataHandler}
+        data={mealList}
+        style={{ width: "90%" }}
       />
     </View>
   );
