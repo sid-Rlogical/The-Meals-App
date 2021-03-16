@@ -1,5 +1,6 @@
-import React from 'react';
+import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+
 
 const FilterScreen = (props) => {
   return (
@@ -7,6 +8,10 @@ const FilterScreen = (props) => {
       <Text>Filter Screen</Text>
     </View>
   );
+};
+
+FilterScreen.navigationOptions = {
+  headerTitle: "Filter",
 };
 
 const styles = StyleSheet.create({

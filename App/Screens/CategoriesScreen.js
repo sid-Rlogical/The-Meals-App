@@ -3,6 +3,8 @@ import { StyleSheet, FlatList } from "react-native";
 
 import { CATEGORY } from "../Models/Data/Dummy-data";
 import CategoryGrid from "../Components/CategoryGrid";
+import HeaderButton from "../Components/HeaderButton";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 const CategoriesScreen = (props) => {
   const renderFlatItemData = (itemData) => {
@@ -34,8 +36,17 @@ const CategoriesScreen = (props) => {
   );
 };
 
-CategoriesScreen.navigationOptions = {
-  headerTitle: "Meal Category",
+CategoriesScreen.navigationOptions = (navData) => {
+  return {
+    headerTitle: "Meal Category",
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item title="Menu" iconName="ios-menu" onPress={() => {
+            navData.navigation.toggleDrawer();
+        }} />
+      </HeaderButtons>
+    ),
+  };
 };
 
 const styles = StyleSheet.create({
