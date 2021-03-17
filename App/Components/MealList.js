@@ -3,7 +3,6 @@ import { FlatList, StyleSheet, View } from "react-native";
 import MealItem from "../Components/MealItem";
 
 const MealList = (props) => {
-
   const flatListDataHandler = (itemData) => {
     return (
       <MealItem
