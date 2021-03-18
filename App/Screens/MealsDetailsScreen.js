@@ -1,10 +1,12 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Image, Dimensions } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import { MEALS } from "../Models/Data/Dummy-data";
 import HeaderButton from "../Components/HeaderButton";
 import DefaultText from "../Components/DefaultText";
+
+const heightNew = Dimensions.get('window').height * 2 / 5
 
 const ListItem = (props) => {
   return (
@@ -62,7 +64,7 @@ MealsDetailsScreen.navigationOptions = (navigationData) => {
 const styles = StyleSheet.create({
   image: {
     width: "100%",
-    height: 200,
+    height: heightNew,
   },
 
   details: {

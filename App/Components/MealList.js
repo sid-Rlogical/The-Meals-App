@@ -1,7 +1,9 @@
 import React from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View, Dimensions } from "react-native";
 import MealItem from "../Components/MealItem";
 
+const heightNew = Dimensions.get('window').height * 2 / 4 - 10
+console.log(heightNew);
 const MealList = (props) => {
   const flatListDataHandler = (itemData) => {
     return (
@@ -38,6 +40,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    height: heightNew,
+    marginVertical: 15
   },
 });
 
