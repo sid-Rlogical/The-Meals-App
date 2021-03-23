@@ -1,11 +1,19 @@
 import React from "react";
+import {useSelector} from "react-redux";
+
 import { FlatList, StyleSheet, View, Dimensions } from "react-native";
 import MealItem from "../Components/MealItem";
 
 const heightNew = Dimensions.get('window').height * 2 / 4 - 10
-console.log(heightNew);
+
 const MealList = (props) => {
+
+  const favMeals = useSelector((state) => state.meals.favoriteMeals)
+
   const flatListDataHandler = (itemData) => {
+
+    const isFavMeals = favMeals.some( (meal) => meal.id === itemData.item.id)
+
     return (
       <MealItem
         mealsData={itemData}
@@ -14,6 +22,8 @@ const MealList = (props) => {
             routeName: "MealsDetails",
             params: {
               mealDetailsId: itemData.item.id,
+              headerTitle: itemData.item.title,
+              isFav: isFavMeals
             },
           });
         }}

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
-import { StyleSheet, FlatList } from "react-native";
+import React from "react";
+import {FlatList} from "react-native";
+
+import DefaultText from "../Components/DefaultText";
 
 import { CATEGORY } from "../Models/Data/Dummy-data";
 import CategoryGrid from "../Components/CategoryGrid";
@@ -41,20 +43,16 @@ CategoriesScreen.navigationOptions = (navData) => {
     headerTitle: "Meal Category",
     headerLeft: () => (
       <HeaderButtons HeaderButtonComponent={HeaderButton}>
-        <Item title="Menu" iconName="ios-menu" onPress={() => {
+        <Item
+          title="Menu"
+          iconName="ios-menu"
+          onPress={() => {
             navData.navigation.toggleDrawer();
-        }} />
+          }}
+        />
       </HeaderButtons>
     ),
   };
 };
-
-const styles = StyleSheet.create({
-  Screen: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default CategoriesScreen;

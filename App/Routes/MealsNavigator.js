@@ -37,7 +37,10 @@ const MealsNavigator = createStackNavigator(
     CategoryMeals: {
       screen: CategoryMealsScreen,
     },
-    MealsDetails: MealsDetailsScreen,
+    MealsDetails: { 
+      screen: MealsDetailsScreen 
+    },
+
   },
   {
     defaultNavigationOptions: defaultNavOptions,
@@ -84,11 +87,11 @@ const mainNavigatorConfig = {
       },
       tabBarColor: Colors.accent,
       tabBarLabel:
-      Platform.OS === "android" ? (
-        <Text style={{ fontFamily: "open-sans" }}>Favorite</Text>
-      ) : (
-        "Favorite"
-      ),
+        Platform.OS === "android" ? (
+          <Text style={{ fontFamily: "open-sans" }}>Favorite</Text>
+        ) : (
+          "Favorite"
+        ),
     },
   },
 };
